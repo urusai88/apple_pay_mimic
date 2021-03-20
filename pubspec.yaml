@@ -1,8 +1,8 @@
 name: apple_pay_mimic
-description: A new flutter plugin project.
+description: Mimics to PassKit API
 version: 0.0.2
-author:
-homepage:
+repository: https://github.com/urusai88/apple_pay_mimic
+issue_tracker: https://github.com/urusai88/apple_pay_mimic/issues
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
