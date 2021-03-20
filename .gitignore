@@ -5,3 +5,8 @@
 .pub/
 
 build/
+
+*.iml
+*.ipr
+*.iws
+.idea/
