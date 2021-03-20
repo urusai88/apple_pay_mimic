@@ -1,17 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
 import 'src/entities.dart';
-import 'src/rpc.dart';
 import 'src/response_builders.dart';
+import 'src/rpc.dart';
 
 export 'src/entities.dart';
-export 'src/rpc.dart';
 export 'src/response_builders.dart';
+export 'src/rpc.dart';
+export 'src/widgets/apple_pay_button.dart';
 
 class ApplePayError {
   final String error;
@@ -22,13 +21,16 @@ class ApplePayError {
   String toString() => error;
 }
 
-typedef DidAuthorizePayment = FutureOr<APayPaymentAuthorizationResult> Function(AuthorizePaymentRequest request);
+typedef DidAuthorizePayment = FutureOr<APayPaymentAuthorizationResult> Function(
+    AuthorizePaymentRequest request, AuthorizationResultBuilder builder);
 typedef DidSelectShippingMethod = FutureOr<APayRequestShippingMethodUpdate> Function(
-    SelectShippingMethodRequest request);
+    SelectShippingMethodRequest request, ShippingMethodUpdateBuilder builder);
 typedef DidSelectShippingContact = FutureOr<APayRequestShippingContactUpdate> Function(
-    SelectShippingContactRequest request);
-typedef DidSelectPaymentMethod = FutureOr<APayRequestPaymentMethodUpdate> Function(SelectPaymentMethodRequest request);
+    SelectShippingContactRequest request, ShippingContactUpdateBuilder builder);
+typedef DidSelectPaymentMethod = FutureOr<APayRequestPaymentMethodUpdate> Function(
+    SelectPaymentMethodRequest request, PaymentMethodUpdateBuilder builder);
 typedef DidError = FutureOr<void> Function(ApplePayError error);
+typedef DidDismissed = FutureOr<void> Function();
 
 class ApplePayPaymentHandler {
   final DidAuthorizePayment onAuthorize;
@@ -36,6 +38,7 @@ class ApplePayPaymentHandler {
   final DidSelectShippingContact onSelectShippingContact;
   final DidSelectPaymentMethod onSelectPaymentMethod;
   final DidError onError;
+  final DidDismissed? onDismissed;
 
   const ApplePayPaymentHandler({
     required this.onAuthorize,
@@ -43,6 +46,7 @@ class ApplePayPaymentHandler {
     required this.onSelectShippingContact,
     required this.onSelectPaymentMethod,
     required this.onError,
+    this.onDismissed,
   });
 }
 
@@ -89,6 +93,8 @@ class ApplePayMimic {
       return await _didSelectPaymentMethod(call.arguments);
     } else if (call.method == 'error') {
       return await _handleError(call.arguments);
+    } else if (call.method == 'dismissed') {
+      return await _handleDismissed(call.arguments);
     }
 
     throw MissingPluginException();
@@ -99,35 +105,55 @@ class ApplePayMimic {
   }
 
   static Future<dynamic> _didAuthorizePayment(dynamic arguments) async {
-    final request = AuthorizePaymentRequest.fromJson(jsonDecode(arguments as String) as Map);
-    final result = await _handler(request.id).onAuthorize(request);
-    final json = result.toJson();
+    try {
+      final request = AuthorizePaymentRequest.fromJson(jsonDecode(arguments as String) as Map);
+      final result = await _handler(request.id).onAuthorize(request, AuthorizationResultBuilder());
+      final json = result.toJson();
 
-    return jsonEncode(json);
+      return jsonEncode(json);
+    } catch (e, s) {
+      print('[Apple Pay] internal error $e');
+      print(s);
+    }
   }
 
   static Future<dynamic> _didSelectShippingMethod(dynamic arguments) async {
-    final request = SelectShippingMethodRequest.fromJson(jsonDecode(arguments as String) as Map);
-    final result = await _handler(request.id).onSelectShippingMethod(request);
-    final json = result.toJson();
+    try {
+      final request = SelectShippingMethodRequest.fromJson(jsonDecode(arguments as String) as Map);
+      final result = await _handler(request.id).onSelectShippingMethod(request, ShippingMethodUpdateBuilder());
+      final json = result.toJson();
 
-    return jsonEncode(json);
+      return jsonEncode(json);
+    } catch (e, s) {
+      print('[Apple Pay] internal error $e');
+      print(s);
+    }
   }
 
   static Future<dynamic> _didSelectShippingContact(dynamic arguments) async {
-    final request = SelectShippingContactRequest.fromJson(jsonDecode(arguments as String) as Map);
-    final result = await _handler(request.id).onSelectShippingContact(request);
-    final json = result.toJson();
+    try {
+      final request = SelectShippingContactRequest.fromJson(jsonDecode(arguments as String) as Map);
+      final result = await _handler(request.id).onSelectShippingContact(request, ShippingContactUpdateBuilder());
+      final json = result.toJson();
 
-    return jsonEncode(json);
+      return jsonEncode(json);
+    } catch (e, s) {
+      print('[Apple Pay] internal error $e');
+      print(s);
+    }
   }
 
   static Future<dynamic> _didSelectPaymentMethod(dynamic arguments) async {
-    final request = SelectPaymentMethodRequest.fromJson(jsonDecode(arguments as String) as Map);
-    final result = await _handler(request.id).onSelectPaymentMethod(request);
-    final json = result.toJson();
+    try {
+      final request = SelectPaymentMethodRequest.fromJson(jsonDecode(arguments as String) as Map);
+      final result = await _handler(request.id).onSelectPaymentMethod(request, PaymentMethodUpdateBuilder());
+      final json = result.toJson();
 
-    return jsonEncode(json);
+      return jsonEncode(json);
+    } catch (e, s) {
+      print('[Apple Pay] internal error $e');
+      print(s);
+    }
   }
 
   static Future<dynamic> _handleError(dynamic arguments) async {
@@ -138,7 +164,19 @@ class ApplePayMimic {
     final id = arguments['id'] as int;
     final step = arguments['step'] as String?;
 
-    print(arguments);
+    print('error $arguments');
+
+    _handler(id).onError(ApplePayError(error: step ?? ''));
+  }
+
+  static Future<dynamic> _handleDismissed(dynamic arguments) async {
+    if (arguments is! Map) {
+      return print('[Apple Pay] _handleDismissed arguments is not Map');
+    }
+
+    final id = arguments['id'] as int;
+
+    _handler(id).onDismissed?.call();
   }
 
   static Future<List<APayPaymentNetwork>> availableNetworks() async {
@@ -163,6 +201,7 @@ class ApplePayMimic {
     required DidSelectShippingContact onSelectShippingContact,
     required DidSelectPaymentMethod onSelectPaymentMethod,
     required DidError onError,
+    DidDismissed? onDismissed,
   }) async {
     final arguments = jsonEncode(request.toJson());
     final response = await _channel.invokeMethod('processPayment', arguments);
@@ -175,6 +214,7 @@ class ApplePayMimic {
       onSelectShippingContact: onSelectShippingContact,
       onSelectPaymentMethod: onSelectPaymentMethod,
       onError: onError,
+      onDismissed: onDismissed,
     );
   }
 }

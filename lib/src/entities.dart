@@ -148,7 +148,7 @@ class APayPaymentSummaryItem {
   static APayPaymentSummaryItem fromJson(Map map) {
     return APayPaymentSummaryItem(
       label: map['label'] as String,
-      amount: map['amount'] as double,
+      amount: (map['amount'] as num).toDouble(),
       type: APayPaymentSummaryItemType.fromJson(map['type'] as Map),
     );
   }
@@ -174,7 +174,7 @@ class APayShippingMethod {
   static APayShippingMethod fromJson(Map map) {
     return APayShippingMethod(
       label: map['label'] as String,
-      amount: map['amount'] as double,
+      amount: (map['amount'] as num).toDouble(),
       type: APayPaymentSummaryItemType.fromJson(map['type'] as Map),
       identifier: map['identifier'] as String?,
       detail: map['detail'] as String?,
@@ -345,7 +345,7 @@ class APayPaymentError {
   final String? postalAddressKey;
   final APayContactField? contactField;
 
-  const APayPaymentError({
+  const APayPaymentError._({
     required this.errorType,
     this.localizedDescription,
     this.postalAddressKey,
@@ -360,7 +360,7 @@ class APayPaymentError {
       };
 
   factory APayPaymentError.contactInvalid({required APayContactField contactField, String? localizedDescription}) {
-    return APayPaymentError(
+    return APayPaymentError._(
       errorType: 'paymentErrorContactInvalid',
       contactField: contactField,
       localizedDescription: localizedDescription,
@@ -368,9 +368,24 @@ class APayPaymentError {
   }
 
   factory APayPaymentError.shippingAddressInvalid({String postalAddressKey = '', String? localizedDescription}) {
-    return APayPaymentError(
+    return APayPaymentError._(
       errorType: 'paymentErrorShippingAddressInvalid',
       postalAddressKey: postalAddressKey,
+      localizedDescription: localizedDescription,
+    );
+  }
+
+  factory APayPaymentError.billingAddressInvalid({String postalAddressKey = '', String? localizedDescription}) {
+    return APayPaymentError._(
+      errorType: 'paymentErrorBillingAddressInvalid',
+      postalAddressKey: postalAddressKey,
+      localizedDescription: localizedDescription,
+    );
+  }
+
+  factory APayPaymentError.shippingAddressUnserviceable({String postalAddressKey = '', String? localizedDescription}) {
+    return APayPaymentError._(
+      errorType: 'paymentErrorShippingAddressUnserviceable',
       localizedDescription: localizedDescription,
     );
   }

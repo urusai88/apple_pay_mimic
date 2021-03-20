@@ -16,7 +16,7 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
         guard let shippingType = value.shippingType.toPK() else {
             return channel.invokeMethod("error", arguments: [
                 "id": paymentId,
-                "error": "Некоррекнтый shippingType " + value.shippingType.value
+                "error": "Некорректный shippingType " + value.shippingType.value
             ])
         }
 
@@ -77,7 +77,9 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
     }
 
     public func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
-        controller.dismiss()
+        controller.dismiss {
+            self.channel.invokeMethod("dismissed", arguments: ["id": self.paymentId])
+        }
     }
 
     public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
@@ -92,6 +94,7 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
                 self.channel.invokeMethod("error", arguments: [
                     "id": self.paymentId,
                     "step": "didAuthorizePayment",
+                    "arguments": "\(any)",
                 ])
                 let result = PKPaymentAuthorizationResult()
                 result.status = PKPaymentAuthorizationStatus.failure
@@ -114,6 +117,7 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
                 self.channel.invokeMethod("error", arguments: [
                     "id": self.paymentId,
                     "step": "didSelectShippingMethod",
+                    "arguments": "\(any)",
                 ])
                 let result = PKPaymentRequestShippingMethodUpdate()
                 result.status = PKPaymentAuthorizationStatus.failure
@@ -136,6 +140,7 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
                 self.channel.invokeMethod("error", arguments: [
                     "id": self.paymentId,
                     "step": "didSelectShippingContact",
+                    "arguments": "\(any)",
                 ])
                 let result = PKPaymentRequestShippingContactUpdate()
                 result.status = PKPaymentAuthorizationStatus.failure
@@ -158,6 +163,7 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
                 self.channel.invokeMethod("error", arguments: [
                     "id": self.paymentId,
                     "step": "didSelectPaymentMethod",
+                    "arguments": "\(any)",
                 ])
                 let result = PKPaymentRequestPaymentMethodUpdate()
                 result.status = PKPaymentAuthorizationStatus.failure

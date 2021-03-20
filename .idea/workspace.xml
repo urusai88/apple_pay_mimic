@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4fa7fd3a-325e-4a60-8c80-7d1896e7ede5" name="Default Changelist" comment="" />
+    <list default="true" id="4fa7fd3a-325e-4a60-8c80-7d1896e7ede5" name="Default Changelist" comment="init commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/PaymentRequestHandler.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/PaymentRequestHandler.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/apple_pay_mimic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/apple_pay_mimic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/entities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/entities.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/response_builders.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/response_builders.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1ptf2U4xbW6kYbw9aQ4jfaTuTfK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,9 +39,29 @@
       <option name="presentableId" value="Default" />
       <updated>1616007099432</updated>
     </task>
+    <task id="LOCAL-00001" summary="init commit">
+      <created>1616012424061</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1616012424061</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="442" y="407" key="CommitChangelistDialog2" timestamp="1616016304544">
+      <screen x="0" y="23" width="2560" height="1337" />
+    </state>
+    <state x="442" y="407" key="CommitChangelistDialog2/-1280.328.1280.777/0.23.2560.1337@0.23.2560.1337" timestamp="1616016304544" />
+    <state x="484" y="561" key="Vcs.Push.Dialog.v2" timestamp="1616016307194">
+      <screen x="0" y="23" width="2560" height="1337" />
+    </state>
+    <state x="484" y="561" key="Vcs.Push.Dialog.v2/-1280.328.1280.777/0.23.2560.1337@0.23.2560.1337" timestamp="1616016307194" />
     <state x="715" y="434" width="615" height="490" key="find.popup" timestamp="1616007783737">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>

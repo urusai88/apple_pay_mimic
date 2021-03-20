@@ -2,37 +2,7 @@ import Flutter
 import UIKit
 import PassKit
 
-extension Array {
-    func onlyType<T>() -> Array<T> {
-        var result: [T] = []
-        for e in self {
-            if let c = e as? T {
-                result.append(c)
-            }
-        }
-        return result
-    }
-}
-
-public func decodeJson<T: Decodable>(_ string: String) -> T? {
-    guard let inputData = string.data(using: .utf8) else {
-        return nil
-    }
-    do {
-        return try JSONDecoder().decode(T.self, from: inputData)
-    } catch {
-        return nil
-    }
-}
-
-public func encodeJson<T: Codable>(_ value: T) -> String? {
-    do {
-        return String(data: try JSONEncoder().encode(value), encoding: .utf8)
-    } catch {
-        return nil
-    }
-}
-
+@available(iOS 12, *)
 public class SwiftApplePayMimicPlugin: NSObject, FlutterPlugin {
     public init(_ channel: FlutterMethodChannel) {
         self.channel = channel
@@ -43,9 +13,15 @@ public class SwiftApplePayMimicPlugin: NSObject, FlutterPlugin {
     var handlers: Dictionary<Int, PaymentRequestHandler> = [:]
 
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "apple_pay_mimic", binaryMessenger: registrar.messenger())
+        let messenger = registrar.messenger()
+        let channel = FlutterMethodChannel(name: "apple_pay_mimic", binaryMessenger: messenger)
         let instance = SwiftApplePayMimicPlugin(channel)
+        
+        let buttonChannel = FlutterMethodChannel(name: "apple_pay_mimic_button", binaryMessenger: messenger)
+        let factory = FLNativeViewFactory(messenger: messenger, channel: buttonChannel)
+        
         registrar.addMethodCallDelegate(instance, channel: channel)
+        registrar.register(factory, withId: "apple_pay_mimic_button")
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) -> Void {
