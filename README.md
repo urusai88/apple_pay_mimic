@@ -7,7 +7,7 @@ Apple Pay Mimic contains mimics to PassKit
 ### Requires iOS 12
 
 * Add apple_pay_mimic dependency to your pubspec.yaml
-* Call ```dart await ApplePayMimic.init()``` for plugin initialization
+* Call ```await ApplePayMimic.init()``` for plugin initialization
 * You are ready
 
 ## Table of Mimics
@@ -19,7 +19,7 @@ Apple Pay Mimic contains mimics to PassKit
 | [PKShippingType](https://developer.apple.com/documentation/passkit/pkshippingtype) | ```APayShippingType``` |
 | [PKContactField](https://developer.apple.com/documentation/passkit/pkcontactfield) | ```APayContactField``` |
 | [PKPaymentSummaryItemType](https://developer.apple.com/documentation/passkit/pkpaymentsummaryitemtype) | ```APayPaymentSummaryItemType``` |
-| [PKPaymentMethodType](https://developer.apple.com/documentation/passkit/pkpaymentmethodtype) | ```APayPaymentItemType``` |
+| [PKPaymentMethodType](https://developer.apple.com/documentation/passkit/pkpaymentmethodtype) | ```APayPaymentMethodType``` |
 
 ### Structures
 | PassKit | ApplePayMimic |
@@ -93,7 +93,7 @@ final request = ProcessPaymentRequest(
 /// @see https://developer.apple.com/documentation/passkit/pkpaymentauthorizationcontrollerdelegate/2867956-paymentauthorizationcontroller
 final onSelectShippingContact = FutureOr<APayRequestShippingContactUpdate>(SelectShippingContactRequest request, ShippingContactUpdateBuilder builder) async {
   if(request.shippingContact.postalAddress == null) {
-    return builder.failure([APayPaymentError.shippingAddressInvalid()]); /// Yes, you mimics for specify PK errors
+    return builder.failure([APayPaymentError.shippingAddressInvalid()]); /// Yes, you can for specify PK errors
   }
   
   return builder.success();
