@@ -1,12 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fa7fd3a-325e-4a60-8c80-7d1896e7ede5" name="Default Changelist" comment="init commit">
+    <list default="true" id="4fa7fd3a-325e-4a60-8c80-7d1896e7ede5" name="Default Changelist" comment="Обновил pubspec.yaml, добавил подробное описание">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/PaymentRequestHandler.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/PaymentRequestHandler.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/apple_pay_mimic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/apple_pay_mimic.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/entities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/entities.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/response_builders.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/response_builders.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/ApplePayButton.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/ApplePayButton.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/apple_pay_mimic.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/apple_pay_mimic.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/src/widgets/apple_pay_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/src/widgets/apple_pay_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/ApplePayButton.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/ApplePayButton.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/apple_pay_mimic.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ios/apple_pay_mimic.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/widgets/apple_pay_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/widgets/apple_pay_button.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +40,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="ProjectId" id="1ptf2U4xbW6kYbw9aQ4jfaTuTfK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -23,9 +49,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SvnConfiguration">
@@ -46,25 +76,102 @@
       <option name="project" value="LOCAL" />
       <updated>1616012424061</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Обновил CHANGELOG.md и README.md">
+      <created>1616277594792</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1616277594792</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Обновил .gitignore">
+      <created>1616277672558</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1616277672558</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Обновил версию">
+      <created>1616277732536</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1616277732536</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Обновил .gitignore">
+      <created>1616277757321</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1616277757321</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Обновил pubspec.yaml, добавил подробное описание">
+      <created>1616278016525</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1616278016525</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="init commit" />
+    <MESSAGE value="Обновил CHANGELOG.md и README.md" />
+    <MESSAGE value="Обновил версию" />
+    <MESSAGE value="Обновил .gitignore" />
+    <MESSAGE value="Обновил pubspec.yaml, добавил подробное описание" />
+    <option name="LAST_COMMIT_MESSAGE" value="Обновил pubspec.yaml, добавил подробное описание" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="442" y="407" key="CommitChangelistDialog2" timestamp="1616016304544">
-      <screen x="0" y="23" width="2560" height="1337" />
+    <state x="485" y="124" width="1300" height="1113" key="CommitChangelistDialog2" timestamp="1616278206093">
+      <screen x="0" y="23" width="2465" height="1417" />
     </state>
     <state x="442" y="407" key="CommitChangelistDialog2/-1280.328.1280.777/0.23.2560.1337@0.23.2560.1337" timestamp="1616016304544" />
-    <state x="484" y="561" key="Vcs.Push.Dialog.v2" timestamp="1616016307194">
-      <screen x="0" y="23" width="2560" height="1337" />
+    <state x="485" y="124" width="1300" height="1113" key="CommitChangelistDialog2/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1616278206093" />
+    <state width="594" height="1019" key="GridCell.Tab.0.bottom" timestamp="1617812484202">
+      <screen x="0" y="23" width="2465" height="1417" />
+    </state>
+    <state width="594" height="1019" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617812484202" />
+    <state width="594" height="1019" key="GridCell.Tab.0.center" timestamp="1617812484202">
+      <screen x="0" y="23" width="2465" height="1417" />
+    </state>
+    <state width="594" height="1019" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617812484202" />
+    <state width="594" height="1019" key="GridCell.Tab.0.left" timestamp="1617812484202">
+      <screen x="0" y="23" width="2465" height="1417" />
+    </state>
+    <state width="594" height="1019" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617812484202" />
+    <state width="594" height="1019" key="GridCell.Tab.0.right" timestamp="1617812484202">
+      <screen x="0" y="23" width="2465" height="1417" />
+    </state>
+    <state width="594" height="1019" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617812484202" />
+    <state x="734" y="370" key="SettingsEditor" timestamp="1616276680116">
+      <screen x="0" y="23" width="2465" height="1417" />
+    </state>
+    <state x="734" y="370" key="SettingsEditor/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1616276680116" />
+    <state x="466" y="593" key="Vcs.Push.Dialog.v2" timestamp="1616278018134">
+      <screen x="0" y="23" width="2465" height="1417" />
     </state>
     <state x="484" y="561" key="Vcs.Push.Dialog.v2/-1280.328.1280.777/0.23.2560.1337@0.23.2560.1337" timestamp="1616016307194" />
+    <state x="466" y="593" key="Vcs.Push.Dialog.v2/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1616278018134" />
     <state x="715" y="434" width="615" height="490" key="find.popup" timestamp="1616007783737">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="715" y="434" width="615" height="490" key="find.popup/-1280.328.1280.777/0.23.2560.1337@0.23.2560.1337" timestamp="1616007783737" />
+    <state x="897" y="348" width="670" height="676" key="search.everywhere.popup" timestamp="1616277488860">
+      <screen x="0" y="23" width="2465" height="1417" />
+    </state>
+    <state x="897" y="348" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1616277488860" />
   </component>
 </project>

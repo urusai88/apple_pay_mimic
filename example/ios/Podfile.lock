@@ -1,0 +1,22 @@
+PODS:
+  - apple_pay_mimic (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - apple_pay_mimic (from `.symlinks/plugins/apple_pay_mimic/ios`)
+  - Flutter (from `Flutter`)
+
+EXTERNAL SOURCES:
+  apple_pay_mimic:
+    :path: ".symlinks/plugins/apple_pay_mimic/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  apple_pay_mimic: 648f7f7f194fe39863f596d30179c004e3d68386
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.1

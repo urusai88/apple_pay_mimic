@@ -97,6 +97,31 @@ class ApplePayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    APayPaymentButtonArguments? arguments;
+    dynamic creationParams;
+    if (type != null && style != null) {
+      arguments = APayPaymentButtonArguments(type: type!, style: style!);
+      creationParams = jsonEncode(arguments.toJson());
+    }
+
+    return UiKitView(
+      hitTestBehavior: PlatformViewHitTestBehavior.translucent,
+      key: creationParams != null ? ValueKey(creationParams) : null,
+      viewType: 'apple_pay_mimic_button',
+      creationParams: creationParams,
+      creationParamsCodec: const StandardMessageCodec(),
+      gestureRecognizers: {
+        Factory<OneSequenceGestureRecognizer>(
+              () => EagerGestureRecognizer(),
+        ),
+      },
+      onPlatformViewCreated: (int id) {
+        if (onPressed != null) {
+          _ApplyPayButtonHandler._register(id, onPressed!);
+        }
+      },
+    );
+
     return LayoutBuilder(
       builder: (context, constraints) {
         assert(() {
@@ -106,30 +131,7 @@ class ApplePayButton extends StatelessWidget {
           return true;
         }());
 
-        APayPaymentButtonArguments? arguments;
-        dynamic creationParams;
-        if (type != null && style != null) {
-          arguments = APayPaymentButtonArguments(type: type!, style: style!);
-          creationParams = jsonEncode(arguments.toJson());
-        }
-
-        return UiKitView(
-          hitTestBehavior: PlatformViewHitTestBehavior.translucent,
-          key: creationParams != null ? ValueKey(creationParams) : null,
-          viewType: 'apple_pay_mimic_button',
-          creationParams: creationParams,
-          creationParamsCodec: const StandardMessageCodec(),
-          gestureRecognizers: {
-            Factory<OneSequenceGestureRecognizer>(
-              () => EagerGestureRecognizer(),
-            ),
-          },
-          onPlatformViewCreated: (int id) {
-            if (onPressed != null) {
-              _ApplyPayButtonHandler._register(id, onPressed!);
-            }
-          },
-        );
+        return Container();
       },
     );
   }

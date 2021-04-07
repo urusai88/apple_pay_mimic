@@ -1,0 +1,1 @@
+{"info":"This is a generated file; do not edit or check into version control.","plugins":{"ios":[{"name":"apple_pay_mimic","path":"/Users/urusai/Documents/apple_pay_mimic/","dependencies":[]}],"android":[],"macos":[],"linux":[],"windows":[],"web":[]},"dependencyGraph":[{"name":"apple_pay_mimic","dependencies":[]}],"date_created":"2021-03-20 15:09:45.957420","version":"2.0.3"}

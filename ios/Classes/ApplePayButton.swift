@@ -102,7 +102,7 @@ class FLNativeViewFactory: NSObject, FlutterPlatformViewFactory {
         viewIdentifier viewId: Int64,
         arguments args: Any?) -> FlutterPlatformView {
         
-        return FLNativeView(
+        FLNativeView(
             frame: frame,
             viewIdentifier: viewId,
             arguments: args,
@@ -111,15 +111,16 @@ class FLNativeViewFactory: NSObject, FlutterPlatformViewFactory {
     }
     
     public func createArgsCodec() -> FlutterMessageCodec & NSObjectProtocol {
-          return FlutterStandardMessageCodec.sharedInstance()
+          FlutterStandardMessageCodec.sharedInstance()
     }
 }
 
 class FLNativeView: NSObject, FlutterPlatformView {
-    private var _view: PKPaymentButton
-    private var messenger: FlutterBinaryMessenger?
-    private var channel: FlutterMethodChannel
-    private var viewId: Int64
+    private let _view: PKPaymentButton
+    private let messenger: FlutterBinaryMessenger?
+    private let channel: FlutterMethodChannel
+    private let viewId: Int64
+    private let frame: CGRect
 
     init(
         frame: CGRect,
@@ -128,10 +129,11 @@ class FLNativeView: NSObject, FlutterPlatformView {
         binaryMessenger messenger: FlutterBinaryMessenger?,
         channel: FlutterMethodChannel
     ) {
-        print("[Apple Pay] FLNativeView", args)
+        print("[Apple Pay] FLNativeView1", args)
         self.messenger = messenger
         self.channel = channel
         self.viewId = viewId
+        self.frame = frame
     
         var data: APayPaymentButtonArguments?
         if let string = args as? String {
@@ -145,17 +147,15 @@ class FLNativeView: NSObject, FlutterPlatformView {
         } else {
             _view = PKPaymentButton()
         }
-        
-        super.init()
-        
-        _view.addTarget(self, action: #selector(tap), for: .touchUpInside)
-    }
-    
-    @objc func tap() -> Void {
-        channel.invokeMethod("tap", arguments: viewId)
+
+        // _view.addTarget(self, action: #selector(tap), for: .touchUpInside)
     }
 
     func view() -> UIView {
-        return _view
+        _view
+    }
+
+    @objc func tap() -> Void {
+        channel.invokeMethod("tap", arguments: viewId)
     }
 }
