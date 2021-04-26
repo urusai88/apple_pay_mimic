@@ -19,31 +19,60 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fa7fd3a-325e-4a60-8c80-7d1896e7ede5" name="Default Changelist" comment="Обновил pubspec.yaml, добавил подробное описание">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="4fa7fd3a-325e-4a60-8c80-7d1896e7ede5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/example/ios/Runner/Runner.entitlements" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/Runner/Runner.entitlements" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/ApplePayButton.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/ApplePayButton.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/example/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/Entities.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/Entities.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/PaymentRequestHandler.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/PaymentRequestHandler.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/SwiftApplePayMimicPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/Classes/SwiftApplePayMimicPlugin.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/apple_pay_mimic.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/ios/apple_pay_mimic.podspec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/src/widgets/apple_pay_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/src/widgets/apple_pay_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/ApplePayButton.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/ApplePayButton.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/apple_pay_mimic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/apple_pay_mimic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/src/entities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/src/entities.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/src/response_builders.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/src/rpc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/lib/src/rpc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/apple_pay_mimic/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Podfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/Entities.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/Entities.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/PaymentRequestHandler.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/PaymentRequestHandler.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Classes/SwiftApplePayMimicPlugin.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/SwiftApplePayMimicPlugin.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/apple_pay_mimic.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ios/apple_pay_mimic.podspec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/widgets/apple_pay_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/widgets/apple_pay_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/apple_pay_mimic.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/apple_pay_mimic.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/entities.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/entities.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/response_builders.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/rpc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/rpc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="ProjectId" id="1ptf2U4xbW6kYbw9aQ4jfaTuTfK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,6 +84,9 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -132,46 +164,59 @@
     <MESSAGE value="Обновил версию" />
     <MESSAGE value="Обновил .gitignore" />
     <MESSAGE value="Обновил pubspec.yaml, добавил подробное описание" />
-    <option name="LAST_COMMIT_MESSAGE" value="Обновил pubspec.yaml, добавил подробное описание" />
+    <MESSAGE value="example" />
+    <option name="LAST_COMMIT_MESSAGE" value="example" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="485" y="124" width="1300" height="1113" key="CommitChangelistDialog2" timestamp="1616278206093">
+    <state x="783" y="367" key="#com.intellij.ide.util.MemberChooser" timestamp="1619415187750">
+      <screen x="0" y="23" width="2465" height="1417" />
+    </state>
+    <state x="783" y="367" key="#com.intellij.ide.util.MemberChooser/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1619415187750" />
+    <state x="708" y="398" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1619421529847">
+      <screen x="0" y="23" width="2465" height="1417" />
+    </state>
+    <state x="708" y="398" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1619421529847" />
+    <state x="485" y="124" width="1300" height="1113" key="CommitChangelistDialog2" timestamp="1617815567635">
       <screen x="0" y="23" width="2465" height="1417" />
     </state>
     <state x="442" y="407" key="CommitChangelistDialog2/-1280.328.1280.777/0.23.2560.1337@0.23.2560.1337" timestamp="1616016304544" />
-    <state x="485" y="124" width="1300" height="1113" key="CommitChangelistDialog2/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1616278206093" />
-    <state width="594" height="1019" key="GridCell.Tab.0.bottom" timestamp="1617812484202">
+    <state x="485" y="124" width="1300" height="1113" key="CommitChangelistDialog2/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617815567635" />
+    <state width="446" height="1122" key="GridCell.Tab.0.bottom" timestamp="1619421847836">
       <screen x="0" y="23" width="2465" height="1417" />
     </state>
-    <state width="594" height="1019" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617812484202" />
-    <state width="594" height="1019" key="GridCell.Tab.0.center" timestamp="1617812484202">
+    <state width="446" height="1122" key="GridCell.Tab.0.bottom/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1619421847836" />
+    <state width="446" height="1122" key="GridCell.Tab.0.center" timestamp="1619421847835">
       <screen x="0" y="23" width="2465" height="1417" />
     </state>
-    <state width="594" height="1019" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617812484202" />
-    <state width="594" height="1019" key="GridCell.Tab.0.left" timestamp="1617812484202">
+    <state width="446" height="1122" key="GridCell.Tab.0.center/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1619421847835" />
+    <state width="446" height="1122" key="GridCell.Tab.0.left" timestamp="1619421847835">
       <screen x="0" y="23" width="2465" height="1417" />
     </state>
-    <state width="594" height="1019" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617812484202" />
-    <state width="594" height="1019" key="GridCell.Tab.0.right" timestamp="1617812484202">
+    <state width="446" height="1122" key="GridCell.Tab.0.left/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1619421847835" />
+    <state width="446" height="1122" key="GridCell.Tab.0.right" timestamp="1619421847835">
       <screen x="0" y="23" width="2465" height="1417" />
     </state>
-    <state width="594" height="1019" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617812484202" />
-    <state x="734" y="370" key="SettingsEditor" timestamp="1616276680116">
+    <state width="446" height="1122" key="GridCell.Tab.0.right/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1619421847835" />
+    <state x="734" y="370" key="SettingsEditor" timestamp="1619365762525">
       <screen x="0" y="23" width="2465" height="1417" />
     </state>
-    <state x="734" y="370" key="SettingsEditor/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1616276680116" />
-    <state x="466" y="593" key="Vcs.Push.Dialog.v2" timestamp="1616278018134">
+    <state x="734" y="370" key="SettingsEditor/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1619365762525" />
+    <state x="466" y="593" key="Vcs.Push.Dialog.v2" timestamp="1617815641761">
       <screen x="0" y="23" width="2465" height="1417" />
     </state>
     <state x="484" y="561" key="Vcs.Push.Dialog.v2/-1280.328.1280.777/0.23.2560.1337@0.23.2560.1337" timestamp="1616016307194" />
-    <state x="466" y="593" key="Vcs.Push.Dialog.v2/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1616278018134" />
+    <state x="466" y="593" key="Vcs.Push.Dialog.v2/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617815641761" />
     <state x="715" y="434" width="615" height="490" key="find.popup" timestamp="1616007783737">
       <screen x="0" y="23" width="2560" height="1337" />
     </state>
     <state x="715" y="434" width="615" height="490" key="find.popup/-1280.328.1280.777/0.23.2560.1337@0.23.2560.1337" timestamp="1616007783737" />
-    <state x="897" y="348" width="670" height="676" key="search.everywhere.popup" timestamp="1616277488860">
+    <state x="1088" y="666" key="git4idea.merge.GitPullDialog" timestamp="1617815606152">
       <screen x="0" y="23" width="2465" height="1417" />
     </state>
-    <state x="897" y="348" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1616277488860" />
+    <state x="1088" y="666" key="git4idea.merge.GitPullDialog/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1617815606152" />
+    <state x="897" y="348" width="670" height="676" key="search.everywhere.popup" timestamp="1619415177804">
+      <screen x="0" y="23" width="2465" height="1417" />
+    </state>
+    <state x="897" y="348" width="670" height="676" key="search.everywhere.popup/-1920.23.1920.1057/0.23.2465.1417@0.23.2465.1417" timestamp="1619415177804" />
   </component>
 </project>

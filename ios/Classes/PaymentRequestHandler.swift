@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import PassKit
 
-class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate {
+class PaymentRequestHandler: NSObject {
     public init(_ channel: FlutterMethodChannel, _ paymentId: Int) {
         self.channel = channel
         self.paymentId = paymentId
@@ -66,7 +66,6 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
         for merchantCapability in merchantCapabilities {
             request.merchantCapabilities.insert(merchantCapability)
         }
-
         controller = PKPaymentAuthorizationController(paymentRequest: request)
         controller!.delegate = self
         controller!.present { result in
@@ -75,10 +74,33 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
             }
         }
     }
+}
 
+extension PaymentRequestHandler: PKPaymentAuthorizationControllerDelegate {
     public func paymentAuthorizationControllerDidFinish(_ controller: PKPaymentAuthorizationController) {
         controller.dismiss {
             self.channel.invokeMethod("dismissed", arguments: ["id": self.paymentId])
+        }
+    }
+
+    public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> ()) {
+        let request = AuthorizePaymentRequest(
+                id: paymentId,
+                payment: APayPayment.fromPK(payment)
+        )
+
+        channel.invokeMethod("didAuthorizePayment", arguments: encodeJson(request)) { any in
+            guard let string = any as? String,
+                  let result: APayPaymentAuthorizationResult = decodeJson(string) else {
+                self.channel.invokeMethod("error", arguments: [
+                    "id": self.paymentId,
+                    "step": "didAuthorizePayment",
+                    "arguments": "\(any)",
+                ])
+                return completion(PKPaymentAuthorizationStatus.failure)
+            }
+
+            completion(result.status.toPK())
         }
     }
 
@@ -147,6 +169,8 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
                 return completion(result)
             }
 
+            print(result.toPK().paymentSummaryItems)
+
             completion(result.toPK())
         }
     }
@@ -173,4 +197,84 @@ class PaymentRequestHandler: NSObject, PKPaymentAuthorizationControllerDelegate 
             completion(result.toPK())
         }
     }
+
+    public func paymentAuthorizationControllerWillAuthorizePayment(_ controller: PKPaymentAuthorizationController) {
+        print("A")
+    }
+
+    /*
+    @available(iOS 14.0, *)
+    public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didRequestMerchantSessionUpdate handler: @escaping (PKPaymentRequestMerchantSessionUpdate) -> ()) {
+        print("B")
+    }
+    */
+
+    public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didSelectShippingMethod shippingMethod: PKShippingMethod, completion: @escaping (PKPaymentAuthorizationStatus, [PKPaymentSummaryItem]) -> ()) {
+        let request = SelectShippingMethodRequest(
+                id: paymentId,
+                shippingMethod: APayShippingMethod.fromPK(shippingMethod)
+        )
+
+        channel.invokeMethod("didSelectShippingMethod", arguments: encodeJson(request)) { any in
+            guard let string = any as? String,
+                  let result: APayRequestShippingMethodUpdate = decodeJson(string) else {
+                self.channel.invokeMethod("error", arguments: [
+                    "id": self.paymentId,
+                    "step": "didSelectShippingMethod",
+                    "arguments": "\(any)",
+                ])
+                return completion(PKPaymentAuthorizationStatus.failure, [])
+            }
+            let pk = result.toPK()
+            completion(pk.status, pk.paymentSummaryItems)
+        }
+    }
+
+    public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didSelectShippingContact contact: PKContact, completion: @escaping (PKPaymentAuthorizationStatus, [PKShippingMethod], [PKPaymentSummaryItem]) -> ()) {
+        let request = SelectShippingContactRequest(
+                id: paymentId,
+                shippingContact: APayContact.fromPK(contact)
+        )
+
+        channel.invokeMethod("didSelectShippingContact", arguments: encodeJson(request)) { any in
+            guard let string = any as? String,
+                  let result: APayRequestShippingContactUpdate = decodeJson(string) else {
+                self.channel.invokeMethod("error", arguments: [
+                    "id": self.paymentId,
+                    "step": "didSelectShippingContact",
+                    "arguments": "\(any)",
+                ])
+                return completion(PKPaymentAuthorizationStatus.failure, [], [])
+            }
+            let pk = result.toPK()
+            completion(pk.status, pk.shippingMethods, pk.paymentSummaryItems)
+        }
+    }
+
+    public func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didSelectPaymentMethod paymentMethod: PKPaymentMethod, completion: @escaping ([PKPaymentSummaryItem]) -> ()) {
+        let request = SelectPaymentMethodRequest(
+                id: paymentId,
+                paymentMethod: APayPaymentMethod.fromPK(paymentMethod)
+        )
+
+        channel.invokeMethod("didSelectPaymentMethod", arguments: encodeJson(request)) { any in
+            guard let string = any as? String,
+                  let result: APayRequestPaymentMethodUpdate = decodeJson(string) else {
+                self.channel.invokeMethod("error", arguments: [
+                    "id": self.paymentId,
+                    "step": "didSelectPaymentMethod",
+                    "arguments": "\(any)",
+                ])
+                return completion([])
+            }
+
+            completion(result.toPK().paymentSummaryItems)
+        }
+    }
+
+    /*
+    public func presentationWindow(for controller: PKPaymentAuthorizationController) -> UIWindow? {
+        fatalError("presentationWindow(for:) has not been implemented")
+    }
+    */
 }

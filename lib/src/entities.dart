@@ -1,181 +1,181 @@
-class APayPaymentAuthStatus {
+class PKPaymentAuthStatus {
   final int value;
 
-  const APayPaymentAuthStatus(this.value);
+  const PKPaymentAuthStatus(this.value);
 
-  static APayPaymentAuthStatus fromJson(Map map) => APayPaymentAuthStatus(map['value'] as int);
+  static PKPaymentAuthStatus fromJson(Map map) => PKPaymentAuthStatus(map['value'] as int);
 
   Map toJson() => {'value': value};
 
-  static const success = APayPaymentAuthStatus(0);
-  static const failure = APayPaymentAuthStatus(1);
+  static const success = PKPaymentAuthStatus(0);
+  static const failure = PKPaymentAuthStatus(1);
 }
 
-class APayPaymentNetwork {
+class PKPaymentNetwork {
   final String value;
 
-  const APayPaymentNetwork(this.value);
+  const PKPaymentNetwork(this.value);
 
-  static APayPaymentNetwork fromJson(Map map) => APayPaymentNetwork(map['value'] as String);
+  static PKPaymentNetwork fromJson(Map map) => PKPaymentNetwork(map['value'] as String);
 
   Map toJson() => {'value': value};
 
-  static const carteBancaire = APayPaymentNetwork("carteBancaire");
-  static const carteBancaires = APayPaymentNetwork("carteBancaires");
-  static const cartesBancaires = APayPaymentNetwork("cartesBancaires");
-  static const chinaUnionPay = APayPaymentNetwork("chinaUnionPay");
-  static const discover = APayPaymentNetwork("discover");
-  static const eftpos = APayPaymentNetwork("eftpos");
-  static const electron = APayPaymentNetwork("electron");
-  static const elo = APayPaymentNetwork("elo");
-  static const idCredit = APayPaymentNetwork("idCredit");
-  static const interac = APayPaymentNetwork("interac");
-  static const JCB = APayPaymentNetwork("JCB");
-  static const mada = APayPaymentNetwork("mada");
-  static const maestro = APayPaymentNetwork("maestro");
-  static const masterCard = APayPaymentNetwork("masterCard");
-  static const privateLabel = APayPaymentNetwork("privateLabel");
-  static const quicPay = APayPaymentNetwork("quicPay");
-  static const suica = APayPaymentNetwork("suica");
-  static const visa = APayPaymentNetwork("visa");
-  static const vPay = APayPaymentNetwork("vPay");
-  static const barcode = APayPaymentNetwork("barcode");
-  static const girocard = APayPaymentNetwork("girocard");
+  static const carteBancaire = PKPaymentNetwork("carteBancaire");
+  static const carteBancaires = PKPaymentNetwork("carteBancaires");
+  static const cartesBancaires = PKPaymentNetwork("cartesBancaires");
+  static const chinaUnionPay = PKPaymentNetwork("chinaUnionPay");
+  static const discover = PKPaymentNetwork("discover");
+  static const eftpos = PKPaymentNetwork("eftpos");
+  static const electron = PKPaymentNetwork("electron");
+  static const elo = PKPaymentNetwork("elo");
+  static const idCredit = PKPaymentNetwork("idCredit");
+  static const interac = PKPaymentNetwork("interac");
+  static const JCB = PKPaymentNetwork("JCB");
+  static const mada = PKPaymentNetwork("mada");
+  static const maestro = PKPaymentNetwork("maestro");
+  static const masterCard = PKPaymentNetwork("masterCard");
+  static const privateLabel = PKPaymentNetwork("privateLabel");
+  static const quicPay = PKPaymentNetwork("quicPay");
+  static const suica = PKPaymentNetwork("suica");
+  static const visa = PKPaymentNetwork("visa");
+  static const vPay = PKPaymentNetwork("vPay");
+  static const barcode = PKPaymentNetwork("barcode");
+  static const girocard = PKPaymentNetwork("girocard");
 }
 
-class APayMerchantCapability {
+class PKMerchantCapability {
   final String value;
 
-  const APayMerchantCapability(this.value);
+  const PKMerchantCapability(this.value);
 
-  static APayMerchantCapability fromJson(Map map) => APayMerchantCapability(map['value'] as String);
+  static PKMerchantCapability fromJson(Map map) => PKMerchantCapability(map['value'] as String);
 
   Map toJson() => {'value': value};
 
-  static const capability3DS = APayMerchantCapability("capability3DS");
-  static const capabilityEMV = APayMerchantCapability("capabilityEMV");
-  static const capabilityCredit = APayMerchantCapability("capabilityCredit");
-  static const capabilityDebit = APayMerchantCapability("capabilityDebit");
+  static const capability3DS = PKMerchantCapability("capability3DS");
+  static const capabilityEMV = PKMerchantCapability("capabilityEMV");
+  static const capabilityCredit = PKMerchantCapability("capabilityCredit");
+  static const capabilityDebit = PKMerchantCapability("capabilityDebit");
 }
 
-class APayShippingType {
+class PKShippingType {
   final String value;
 
-  const APayShippingType(this.value);
+  const PKShippingType(this.value);
 
-  static APayShippingType fromJson(Map map) => APayShippingType(map['value'] as String);
+  static PKShippingType fromJson(Map map) => PKShippingType(map['value'] as String);
 
   Map toJson() => {'value': value};
 
-  static const shipping = APayShippingType("shipping");
-  static const delivery = APayShippingType("delivery");
-  static const storePickup = APayShippingType("storePickup");
-  static const servicePickup = APayShippingType("servicePickup");
+  static const shipping = PKShippingType("shipping");
+  static const delivery = PKShippingType("delivery");
+  static const storePickup = PKShippingType("storePickup");
+  static const servicePickup = PKShippingType("servicePickup");
 }
 
-class APayContactField {
+class PKContactField {
   final String value;
 
-  const APayContactField(this.value);
+  const PKContactField(this.value);
 
-  static APayContactField fromJson(Map map) => APayContactField(map['value'] as String);
+  static PKContactField fromJson(Map map) => PKContactField(map['value'] as String);
 
   Map toJson() => {'value': value};
 
-  static const postalAddress = APayContactField("postalAddress");
-  static const emailAddress = APayContactField("emailAddress");
-  static const phoneNumber = APayContactField("phoneNumber");
-  static const name = APayContactField("name");
-  static const phoneticName = APayContactField("phoneticName");
+  static const postalAddress = PKContactField("postalAddress");
+  static const emailAddress = PKContactField("emailAddress");
+  static const phoneNumber = PKContactField("phoneNumber");
+  static const name = PKContactField("name");
+  static const phoneticName = PKContactField("phoneticName");
 
-  static const List<APayContactField> all = [postalAddress, emailAddress, phoneNumber, name, phoneticName];
+  static const List<PKContactField> all = [postalAddress, emailAddress, phoneNumber, name, phoneticName];
 }
 
-class APayPaymentSummaryItemType {
+class PKPaymentSummaryItemType {
   final int value;
 
-  const APayPaymentSummaryItemType(this.value);
+  const PKPaymentSummaryItemType(this.value);
 
-  static APayPaymentSummaryItemType fromJson(Map map) => APayPaymentSummaryItemType(map['value'] as int);
+  static PKPaymentSummaryItemType fromJson(Map map) => PKPaymentSummaryItemType(map['value'] as int);
 
   Map toJson() => {'value': value};
 
-  static const finall = APayPaymentSummaryItemType(0);
-  static const pending = APayPaymentSummaryItemType(1);
+  static const finall = PKPaymentSummaryItemType(0);
+  static const pending = PKPaymentSummaryItemType(1);
 }
 
-class APayPaymentMethodType {
+class PKPaymentMethodType {
   final int value;
 
-  const APayPaymentMethodType(this.value);
+  const PKPaymentMethodType(this.value);
 
-  static APayPaymentMethodType fromJson(Map map) => APayPaymentMethodType(map['value'] as int);
+  static PKPaymentMethodType fromJson(Map map) => PKPaymentMethodType(map['value'] as int);
 
   Map toJson() => {'value': value};
 
-  static const unknown = APayPaymentSummaryItemType(0);
-  static const debit = APayPaymentSummaryItemType(1);
-  static const credit = APayPaymentSummaryItemType(0);
-  static const prepaid = APayPaymentSummaryItemType(1);
-  static const store = APayPaymentSummaryItemType(0);
+  static const unknown = PKPaymentSummaryItemType(0);
+  static const debit = PKPaymentSummaryItemType(1);
+  static const credit = PKPaymentSummaryItemType(0);
+  static const prepaid = PKPaymentSummaryItemType(1);
+  static const store = PKPaymentSummaryItemType(0);
 }
 
-class APayPaymentMethod {
+class PKPaymentMethod {
   final String? displayName;
-  final APayPaymentNetwork? network;
-  final APayPaymentMethodType type;
+  final PKPaymentNetwork? network;
+  final PKPaymentMethodType type;
 
-  const APayPaymentMethod({this.displayName, this.network, required this.type});
+  const PKPaymentMethod({this.displayName, this.network, required this.type});
 
-  static APayPaymentMethod fromJson(Map map) => APayPaymentMethod(
+  static PKPaymentMethod fromJson(Map map) => PKPaymentMethod(
         displayName: map['displayName'] as String?,
-        network: map['network'] != null ? APayPaymentNetwork.fromJson(map['network'] as Map) : null,
-        type: APayPaymentMethodType.fromJson(map['type'] as Map),
+        network: map['network'] != null ? PKPaymentNetwork.fromJson(map['network'] as Map) : null,
+        type: PKPaymentMethodType.fromJson(map['type'] as Map),
       );
 }
 
-class APayPaymentSummaryItem {
+class PKPaymentSummaryItem {
   final String label;
   final double amount;
-  final APayPaymentSummaryItemType type;
+  final PKPaymentSummaryItemType type;
 
-  const APayPaymentSummaryItem({
+  const PKPaymentSummaryItem({
     required this.label,
     required this.amount,
-    this.type = APayPaymentSummaryItemType.finall,
+    this.type = PKPaymentSummaryItemType.finall,
   });
 
-  static APayPaymentSummaryItem fromJson(Map map) {
-    return APayPaymentSummaryItem(
+  static PKPaymentSummaryItem fromJson(Map map) {
+    return PKPaymentSummaryItem(
       label: map['label'] as String,
       amount: (map['amount'] as num).toDouble(),
-      type: APayPaymentSummaryItemType.fromJson(map['type'] as Map),
+      type: PKPaymentSummaryItemType.fromJson(map['type'] as Map),
     );
   }
 
   Map toJson() => {'label': label, 'amount': amount, 'type': type.toJson()};
 }
 
-class APayShippingMethod {
+class PKShippingMethod {
   final String label;
   final double amount;
-  final APayPaymentSummaryItemType type;
+  final PKPaymentSummaryItemType type;
   final String? identifier;
   final String? detail;
 
-  const APayShippingMethod({
+  const PKShippingMethod({
     required this.label,
     required this.amount,
-    this.type = APayPaymentSummaryItemType.finall,
+    this.type = PKPaymentSummaryItemType.finall,
     this.identifier,
     this.detail,
   });
 
-  static APayShippingMethod fromJson(Map map) {
-    return APayShippingMethod(
+  static PKShippingMethod fromJson(Map map) {
+    return PKShippingMethod(
       label: map['label'] as String,
       amount: (map['amount'] as num).toDouble(),
-      type: APayPaymentSummaryItemType.fromJson(map['type'] as Map),
+      type: PKPaymentSummaryItemType.fromJson(map['type'] as Map),
       identifier: map['identifier'] as String?,
       detail: map['detail'] as String?,
     );
@@ -190,16 +190,16 @@ class APayShippingMethod {
       };
 }
 
-class APayPersonNameComponents {
+class PersonNameComponents {
   final String? namePrefix;
   final String? givenName;
   final String? middleName;
   final String? familyName;
   final String? nameSuffix;
   final String? nickname;
-  final APayPersonNameComponents? phoneticRepresentation;
+  final PersonNameComponents? phoneticRepresentation;
 
-  const APayPersonNameComponents({
+  const PersonNameComponents({
     this.namePrefix,
     this.givenName,
     this.middleName,
@@ -209,8 +209,8 @@ class APayPersonNameComponents {
     this.phoneticRepresentation,
   });
 
-  static APayPersonNameComponents fromJson(Map map) {
-    return APayPersonNameComponents(
+  static PersonNameComponents fromJson(Map map) {
+    return PersonNameComponents(
       namePrefix: map['namePrefix'] as String?,
       givenName: map['givenName'] as String?,
       middleName: map['middleName'] as String?,
@@ -218,7 +218,7 @@ class APayPersonNameComponents {
       nameSuffix: map['nameSuffix'] as String?,
       nickname: map['nickname'] as String?,
       phoneticRepresentation: map['phoneticRepresentation'] != null
-          ? APayPersonNameComponents.fromJson(map['phoneticRepresentation'] as Map)
+          ? PersonNameComponents.fromJson(map['phoneticRepresentation'] as Map)
           : null,
     );
   }
@@ -234,7 +234,7 @@ class APayPersonNameComponents {
       };
 }
 
-class APayPostalAddress {
+class CNPostalAddress {
   final String street;
   final String subLocality;
   final String city;
@@ -244,7 +244,7 @@ class APayPostalAddress {
   final String country;
   final String isoCountryCode;
 
-  const APayPostalAddress({
+  const CNPostalAddress({
     required this.street,
     required this.subLocality,
     required this.city,
@@ -255,8 +255,8 @@ class APayPostalAddress {
     required this.isoCountryCode,
   });
 
-  static APayPostalAddress fromJson(Map map) {
-    return APayPostalAddress(
+  static CNPostalAddress fromJson(Map map) {
+    return CNPostalAddress(
       street: map['street'] as String,
       subLocality: map['subLocality'] as String,
       city: map['city'] as String,
@@ -280,18 +280,18 @@ class APayPostalAddress {
       };
 }
 
-class APayContact {
-  final APayPersonNameComponents? name;
-  final APayPostalAddress? postalAddress;
+class PKContact {
+  final PersonNameComponents? name;
+  final CNPostalAddress? postalAddress;
   final String? phoneNumber;
   final String? emailAddress;
 
-  const APayContact({this.name, this.postalAddress, this.phoneNumber, this.emailAddress});
+  const PKContact({this.name, this.postalAddress, this.phoneNumber, this.emailAddress});
 
-  static APayContact fromJson(Map map) {
-    return APayContact(
-      name: map['name'] != null ? APayPersonNameComponents.fromJson(map['name'] as Map) : null,
-      postalAddress: map['postalAddress'] != null ? APayPostalAddress.fromJson(map['postalAddress'] as Map) : null,
+  static PKContact fromJson(Map map) {
+    return PKContact(
+      name: map['name'] != null ? PersonNameComponents.fromJson(map['name'] as Map) : null,
+      postalAddress: map['postalAddress'] != null ? CNPostalAddress.fromJson(map['postalAddress'] as Map) : null,
       phoneNumber: map['phoneNumber'] as String?,
       emailAddress: map['emailAddress'] as String?,
     );
@@ -305,47 +305,47 @@ class APayContact {
       };
 }
 
-class APayPaymentToken {
-  final APayPaymentMethod paymentMethod;
+class PKPaymentToken {
+  final PKPaymentMethod paymentMethod;
   final String transactionIdentifier;
   final String paymentData;
 
-  const APayPaymentToken({required this.paymentMethod, required this.transactionIdentifier, required this.paymentData});
+  const PKPaymentToken({required this.paymentMethod, required this.transactionIdentifier, required this.paymentData});
 
-  static APayPaymentToken fromJson(Map map) {
-    return APayPaymentToken(
-      paymentMethod: APayPaymentMethod.fromJson(map['paymentMethod'] as Map),
+  static PKPaymentToken fromJson(Map map) {
+    return PKPaymentToken(
+      paymentMethod: PKPaymentMethod.fromJson(map['paymentMethod'] as Map),
       transactionIdentifier: map['transactionIdentifier'] as String,
       paymentData: map['paymentData'] as String,
     );
   }
 }
 
-class APayPayment {
-  final APayPaymentToken token;
-  final APayContact? billingContact;
-  final APayContact? shippingContact;
-  final APayShippingMethod? shippingMethod;
+class PKPayment {
+  final PKPaymentToken token;
+  final PKContact? billingContact;
+  final PKContact? shippingContact;
+  final PKShippingMethod? shippingMethod;
 
-  const APayPayment({required this.token, this.billingContact, this.shippingContact, this.shippingMethod});
+  const PKPayment({required this.token, this.billingContact, this.shippingContact, this.shippingMethod});
 
-  static APayPayment fromJson(Map map) {
-    return APayPayment(
-      token: APayPaymentToken.fromJson(map['token'] as Map),
-      billingContact: map['billingContact'] != null ? APayContact.fromJson(map['billingContact'] as Map) : null,
-      shippingContact: map['shippingContact'] != null ? APayContact.fromJson(map['shippingContact'] as Map) : null,
-      shippingMethod: map['shippingMethod'] != null ? APayShippingMethod.fromJson(map['shippingMethod'] as Map) : null,
+  static PKPayment fromJson(Map map) {
+    return PKPayment(
+      token: PKPaymentToken.fromJson(map['token'] as Map),
+      billingContact: map['billingContact'] != null ? PKContact.fromJson(map['billingContact'] as Map) : null,
+      shippingContact: map['shippingContact'] != null ? PKContact.fromJson(map['shippingContact'] as Map) : null,
+      shippingMethod: map['shippingMethod'] != null ? PKShippingMethod.fromJson(map['shippingMethod'] as Map) : null,
     );
   }
 }
 
-class APayPaymentError {
+class PKPaymentError {
   final String errorType;
   final String? localizedDescription;
   final String? postalAddressKey;
-  final APayContactField? contactField;
+  final PKContactField? contactField;
 
-  const APayPaymentError._({
+  const PKPaymentError._({
     required this.errorType,
     this.localizedDescription,
     this.postalAddressKey,
@@ -359,43 +359,43 @@ class APayPaymentError {
         'contactField': contactField?.toJson(),
       };
 
-  factory APayPaymentError.contactInvalid({required APayContactField contactField, String? localizedDescription}) {
-    return APayPaymentError._(
+  factory PKPaymentError.contactInvalid({required PKContactField contactField, String? localizedDescription}) {
+    return PKPaymentError._(
       errorType: 'paymentErrorContactInvalid',
       contactField: contactField,
       localizedDescription: localizedDescription,
     );
   }
 
-  factory APayPaymentError.shippingAddressInvalid({String postalAddressKey = '', String? localizedDescription}) {
-    return APayPaymentError._(
+  factory PKPaymentError.shippingAddressInvalid({String postalAddressKey = '', String? localizedDescription}) {
+    return PKPaymentError._(
       errorType: 'paymentErrorShippingAddressInvalid',
       postalAddressKey: postalAddressKey,
       localizedDescription: localizedDescription,
     );
   }
 
-  factory APayPaymentError.billingAddressInvalid({String postalAddressKey = '', String? localizedDescription}) {
-    return APayPaymentError._(
+  factory PKPaymentError.billingAddressInvalid({String postalAddressKey = '', String? localizedDescription}) {
+    return PKPaymentError._(
       errorType: 'paymentErrorBillingAddressInvalid',
       postalAddressKey: postalAddressKey,
       localizedDescription: localizedDescription,
     );
   }
 
-  factory APayPaymentError.shippingAddressUnserviceable({String postalAddressKey = '', String? localizedDescription}) {
-    return APayPaymentError._(
+  factory PKPaymentError.shippingAddressUnserviceable({String postalAddressKey = '', String? localizedDescription}) {
+    return PKPaymentError._(
       errorType: 'paymentErrorShippingAddressUnserviceable',
       localizedDescription: localizedDescription,
     );
   }
 }
 
-class APayPaymentAuthorizationResult {
-  final APayPaymentAuthStatus status;
-  final List<APayPaymentError>? errors;
+class PKPaymentAuthorizationResult {
+  final PKPaymentAuthStatus status;
+  final List<PKPaymentError>? errors;
 
-  const APayPaymentAuthorizationResult({required this.status, this.errors});
+  const PKPaymentAuthorizationResult({required this.status, this.errors});
 
   Map toJson() => {
         'status': status.toJson(),
@@ -403,53 +403,66 @@ class APayPaymentAuthorizationResult {
       };
 }
 
-class APayRequestShippingMethodUpdate {
-  final APayPaymentAuthStatus status;
-  final List<APayPaymentSummaryItem> paymentSummaryItems;
+class PKPaymentRequestShippingMethodUpdate {
+  final PKPaymentAuthStatus status;
+  final List<PKPaymentSummaryItem> paymentSummaryItems;
 
-  const APayRequestShippingMethodUpdate({required this.status, required this.paymentSummaryItems});
+  const PKPaymentRequestShippingMethodUpdate({required this.status, required this.paymentSummaryItems});
 
-  Map toJson() => {
-        'status': status.toJson(),
-        'paymentSummaryItems': paymentSummaryItems.map((e) => e.toJson()).toList(),
-      };
+  Map toJson() {
+    return {
+      'status': status.toJson(),
+      'paymentSummaryItems': paymentSummaryItems.map((e) => e.toJson()).toList(),
+    };
+  }
 }
 
-class APayRequestShippingContactUpdate {
-  final APayPaymentAuthStatus status;
-  final List<APayPaymentSummaryItem> paymentSummaryItems;
-  final List<APayShippingMethod> shippingMethods;
-  final List<APayPaymentError>? errors;
+class PKPaymentRequestMerchantSessionUpdate {
+  final PKPaymentAuthStatus status;
+  final Map dictionary;
 
-  const APayRequestShippingContactUpdate({
+  const PKPaymentRequestMerchantSessionUpdate({required this.status, this.dictionary = const {}});
+}
+
+class PKPaymentRequestShippingContactUpdate {
+  final PKPaymentAuthStatus status;
+  final List<PKPaymentSummaryItem> paymentSummaryItems;
+  final List<PKShippingMethod> shippingMethods;
+  final List<PKPaymentError>? errors;
+
+  const PKPaymentRequestShippingContactUpdate({
     required this.status,
     required this.paymentSummaryItems,
     required this.shippingMethods,
     this.errors,
   });
 
-  Map toJson() => {
-        'status': status.toJson(),
-        'paymentSummaryItems': paymentSummaryItems.map((e) => e.toJson()).toList(),
-        'shippingMethods': shippingMethods.map((e) => e.toJson()).toList(),
-        'errors': errors?.map((e) => e.toJson()).toList(),
-      };
+  Map toJson() {
+    return {
+      'status': status.toJson(),
+      'paymentSummaryItems': paymentSummaryItems.map((e) => e.toJson()).toList(),
+      'shippingMethods': shippingMethods.map((e) => e.toJson()).toList(),
+      'errors': errors?.map((e) => e.toJson()).toList(),
+    };
+  }
 }
 
-class APayRequestPaymentMethodUpdate {
-  final APayPaymentAuthStatus status;
-  final List<APayPaymentSummaryItem> paymentSummaryItems;
-  final List<APayPaymentError>? errors;
+class PKPaymentRequestPaymentMethodUpdate {
+  final PKPaymentAuthStatus status;
+  final List<PKPaymentSummaryItem> paymentSummaryItems;
+  final List<PKPaymentError>? errors;
 
-  const APayRequestPaymentMethodUpdate({
+  const PKPaymentRequestPaymentMethodUpdate({
     required this.status,
     required this.paymentSummaryItems,
     this.errors,
   });
 
-  Map toJson() => {
-        'status': status.toJson(),
-        'paymentSummaryItems': paymentSummaryItems.map((e) => e.toJson()).toList(),
-        'errors': errors?.map((e) => e.toJson()).toList(),
-      };
+  Map toJson() {
+    return {
+      'status': status.toJson(),
+      'paymentSummaryItems': paymentSummaryItems.map((e) => e.toJson()).toList(),
+      'errors': errors?.map((e) => e.toJson()).toList(),
+    };
+  }
 }

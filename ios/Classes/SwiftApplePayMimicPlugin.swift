@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import PassKit
 
-@available(iOS 12, *)
+@available(iOS 10, *)
 public class SwiftApplePayMimicPlugin: NSObject, FlutterPlugin {
     public init(_ channel: FlutterMethodChannel) {
         self.channel = channel

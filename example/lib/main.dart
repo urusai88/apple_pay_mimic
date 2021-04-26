@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:apple_pay_mimic/apple_pay_mimic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,82 +12,210 @@ void main() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  runApp(MyApp());
+  ApplePayMimic.init();
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
+  const MyApp();
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Future<void> _showError(BuildContext context) async {
+    return showCupertinoDialog(
+      context: context,
+      builder: (context) {
+        return CupertinoAlertDialog(
+          content: Text("Can't make a payment"),
+          actions: [
+            CupertinoDialogAction(
+              child: Text('Sad news'),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _onPressed(BuildContext context) async {
+    final merchantCapabilities = [PKMerchantCapability.capability3DS];
+    final contactFields = [PKContactField.postalAddress]; // required fields
+
+    final items = [
+      PKPaymentSummaryItem(label: 'Book "Harry Potter"', amount: 22.5),
+      PKPaymentSummaryItem(label: "Pencil case", amount: 3),
+    ];
+    final bonusItemsInGermany = [
+      PKPaymentSummaryItem(label: 'Tape FREE BONUS', amount: 0),
+    ];
+    final allowedShippingCountries = [
+      'Germany',
+      'Russia',
+    ];
+    final shippingMethods = [
+      PKShippingMethod(
+        label: "Standard shipping",
+        amount: 0,
+        identifier: "free",
+        detail: "May take 7-10 days",
+      ),
+      PKShippingMethod(
+        label: "Fast shipping",
+        amount: 5,
+        identifier: "paid",
+        detail: "1-2 days estimated",
+      ),
+    ];
+
+    final canMakePayments = await ApplePayMimic.canMakePayments();
+    final availableNetworks = await ApplePayMimic.availableNetworks();
+    final canMakePaymentsCard = await ApplePayMimic.canMakePayments(CanMakePaymentsRequest(
+      usingNetworks: availableNetworks,
+      capabilities: merchantCapabilities,
+    ));
+
+    if (!canMakePayments || !canMakePaymentsCard) {
+      await _showError(context);
+    }
+
+    final delegate = PaymentDelegate(
+      items: items,
+      shippingMethods: shippingMethods,
+      allowedShippingCountries: allowedShippingCountries,
+      bonusItemsInGermany: bonusItemsInGermany,
+    );
+    final request = ProcessPaymentRequest(
+      merchantIdentifier: 'merchant.com.lucyinthesky.sandbox',
+      countryCode: 'US',
+      currencyCode: 'USD',
+      shippingType: PKShippingType.shipping,
+      merchantCapabilities: merchantCapabilities,
+      requiredShippingContactFields: contactFields,
+      paymentSummaryItems: PaymentDelegate.withTotal(items),
+      supportedNetworks: availableNetworks,
+      shippingMethods: shippingMethods,
+    );
+
+    ApplePayMimic.processPayment(
+      request: request,
+      delegate: delegate,
+      onError: (error) {
+        print(error);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Builder(builder: (context) {
+        return Scaffold(
+          body: Center(
+            child: ElevatedButton(
+              onPressed: () => _onPressed(context),
+              child: Text('PAY'),
+            ),
+          ),
+        );
+      }),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class PaymentDelegate extends PKPaymentAuthorizationControllerDelegate {
+  final List<PKPaymentSummaryItem> items;
+  final List<PKPaymentSummaryItem> bonusItemsInGermany;
+  final List<PKShippingMethod> shippingMethods;
+  final List<String> allowedShippingCountries;
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  String country = '';
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+  PaymentDelegate({
+    required this.items,
+    required this.shippingMethods,
+    required this.bonusItemsInGermany,
+    required this.allowedShippingCountries,
+  });
 
-  final String title;
+  static List<PKPaymentSummaryItem> withTotal(List<PKPaymentSummaryItem> items) {
+    final total = PKPaymentSummaryItem(label: 'Total', amount: items.map((e) => e.amount).reduce((a, b) => a + b));
+    return List.of(items)..add(total);
+  }
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  var s = false;
+  FutureOr<void> didFinish() {}
 
   @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-            context: context,
-            builder: (_) {
-              return Container(
-                height: 200,
-                padding: const EdgeInsets.all(16),
-                child: Center(
-                  child: Container(
-                    height: 100,
-                    child: ApplePayButton(
-                      onPressed: () {
-                        setState(() => s = !s);
-                      },
-                      style: APayPaymentButtonStyle.white,
-                      type: APayPaymentButtonType.checkout,
-                    ),
-                  ),
-                ),
-              );
-            },
-          );
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+  FutureOr<PKPaymentRequestPaymentMethodUpdate> didSelectPaymentMethod(PKPaymentMethod paymentMethod) {
+    final items = List.of(this.items);
+    if (country == 'Germany') {
+      items.addAll(bonusItemsInGermany);
+    }
+    return PKPaymentRequestPaymentMethodUpdate(
+      status: PKPaymentAuthStatus.success,
+      paymentSummaryItems: withTotal(items),
+    );
+  }
+
+  @override
+  FutureOr<PKPaymentRequestShippingContactUpdate> didSelectShippingContact(PKContact contact) {
+    final items = List.of(this.items);
+
+    if (!allowedShippingCountries.contains(contact.postalAddress?.country)) {
+      return PKPaymentRequestShippingContactUpdate(
+        status: PKPaymentAuthStatus.failure,
+        paymentSummaryItems: items,
+        shippingMethods: shippingMethods,
+        errors: [
+          PKPaymentError.shippingAddressUnserviceable(postalAddressKey: ApplePayConstants.postalAddressCountryKey),
+        ],
+      );
+    }
+
+    country = contact.postalAddress?.country ?? '';
+    if (country == 'Germany') {
+      items.addAll(bonusItemsInGermany);
+    }
+
+    return PKPaymentRequestShippingContactUpdate(
+      status: PKPaymentAuthStatus.success,
+      paymentSummaryItems: withTotal(items),
+      shippingMethods: shippingMethods,
+    );
+  }
+
+  @override
+  FutureOr<PKPaymentRequestShippingMethodUpdate> didSelectShippingMethod(PKShippingMethod shippingMethod) {
+    final items = List.of(this.items);
+
+    if (shippingMethod.amount > 0) {
+      items.add(PKPaymentSummaryItem(label: shippingMethod.label, amount: shippingMethod.amount));
+    }
+
+    return PKPaymentRequestShippingMethodUpdate(
+      status: PKPaymentAuthStatus.success,
+      paymentSummaryItems: withTotal(items),
+    );
+  }
+
+  @override
+  FutureOr<PKPaymentRequestMerchantSessionUpdate> didRequestMerchantSessionUpdate() {
+    return PKPaymentRequestMerchantSessionUpdate(
+      status: PKPaymentAuthStatus.success,
+    );
+  }
+
+  @override
+  FutureOr<void> willAuthorizePayment() {}
+
+  @override
+  FutureOr<PKPaymentAuthorizationResult> didAuthorizePayment(PKPayment payment) {
+    return PKPaymentAuthorizationResult(
+      status: PKPaymentAuthStatus.success,
     );
   }
 }

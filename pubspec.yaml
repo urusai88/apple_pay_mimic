@@ -1,6 +1,6 @@
 name: apple_pay_mimic
 description: Mimics to PassKit API
-version: 0.0.2
+version: 0.1.0
 repository: https://github.com/urusai88/apple_pay_mimic
 issue_tracker: https://github.com/urusai88/apple_pay_mimic/issues
 

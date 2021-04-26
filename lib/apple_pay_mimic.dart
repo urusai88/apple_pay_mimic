@@ -1,16 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:apple_pay_mimic/src/payment_authorization_controller_delegate.dart';
 import 'package:flutter/services.dart';
 
 import 'src/entities.dart';
-import 'src/response_builders.dart';
 import 'src/rpc.dart';
 
 export 'src/entities.dart';
-export 'src/response_builders.dart';
 export 'src/rpc.dart';
 export 'src/widgets/apple_pay_button.dart';
+export 'src/payment_authorization_controller_delegate.dart';
 
 class ApplePayError {
   final String error;
@@ -21,30 +21,17 @@ class ApplePayError {
   String toString() => error;
 }
 
-typedef DidAuthorizePayment = FutureOr<APayPaymentAuthorizationResult> Function(
-    AuthorizePaymentRequest request, AuthorizationResultBuilder builder);
-typedef DidSelectShippingMethod = FutureOr<APayRequestShippingMethodUpdate> Function(
-    SelectShippingMethodRequest request, ShippingMethodUpdateBuilder builder);
-typedef DidSelectShippingContact = FutureOr<APayRequestShippingContactUpdate> Function(
-    SelectShippingContactRequest request, ShippingContactUpdateBuilder builder);
-typedef DidSelectPaymentMethod = FutureOr<APayRequestPaymentMethodUpdate> Function(
-    SelectPaymentMethodRequest request, PaymentMethodUpdateBuilder builder);
 typedef DidError = FutureOr<void> Function(ApplePayError error);
 typedef DidDismissed = FutureOr<void> Function();
 
 class ApplePayPaymentHandler {
-  final DidAuthorizePayment onAuthorize;
-  final DidSelectShippingMethod onSelectShippingMethod;
-  final DidSelectShippingContact onSelectShippingContact;
-  final DidSelectPaymentMethod onSelectPaymentMethod;
+  final PKPaymentAuthorizationControllerDelegate delegate;
+
   final DidError onError;
   final DidDismissed? onDismissed;
 
   const ApplePayPaymentHandler({
-    required this.onAuthorize,
-    required this.onSelectShippingMethod,
-    required this.onSelectShippingContact,
-    required this.onSelectPaymentMethod,
+    required this.delegate,
     required this.onError,
     this.onDismissed,
   });
@@ -107,52 +94,48 @@ class ApplePayMimic {
   static Future<dynamic> _didAuthorizePayment(dynamic arguments) async {
     try {
       final request = AuthorizePaymentRequest.fromJson(jsonDecode(arguments as String) as Map);
-      final result = await _handler(request.id).onAuthorize(request, AuthorizationResultBuilder());
+      final result = await _handler(request.id).delegate.didAuthorizePayment(request.payment);
       final json = result.toJson();
 
       return jsonEncode(json);
     } catch (e, s) {
-      print('[Apple Pay] internal error $e');
-      print(s);
+      print('[Apple Pay] internal error $e\n$s');
     }
   }
 
   static Future<dynamic> _didSelectShippingMethod(dynamic arguments) async {
     try {
       final request = SelectShippingMethodRequest.fromJson(jsonDecode(arguments as String) as Map);
-      final result = await _handler(request.id).onSelectShippingMethod(request, ShippingMethodUpdateBuilder());
+      final result = await _handler(request.id).delegate.didSelectShippingMethod(request.shippingMethod);
       final json = result.toJson();
 
       return jsonEncode(json);
     } catch (e, s) {
-      print('[Apple Pay] internal error $e');
-      print(s);
+      print('[Apple Pay] internal error $e\n$s');
     }
   }
 
   static Future<dynamic> _didSelectShippingContact(dynamic arguments) async {
     try {
       final request = SelectShippingContactRequest.fromJson(jsonDecode(arguments as String) as Map);
-      final result = await _handler(request.id).onSelectShippingContact(request, ShippingContactUpdateBuilder());
+      final result = await _handler(request.id).delegate.didSelectShippingContact(request.shippingContact);
       final json = result.toJson();
 
       return jsonEncode(json);
     } catch (e, s) {
-      print('[Apple Pay] internal error $e');
-      print(s);
+      print('[Apple Pay] internal error $e\n$s');
     }
   }
 
   static Future<dynamic> _didSelectPaymentMethod(dynamic arguments) async {
     try {
       final request = SelectPaymentMethodRequest.fromJson(jsonDecode(arguments as String) as Map);
-      final result = await _handler(request.id).onSelectPaymentMethod(request, PaymentMethodUpdateBuilder());
+      final result = await _handler(request.id).delegate.didSelectPaymentMethod(request.paymentMethod);
       final json = result.toJson();
 
       return jsonEncode(json);
     } catch (e, s) {
-      print('[Apple Pay] internal error $e');
-      print(s);
+      print('[Apple Pay] internal error $e\n$s');
     }
   }
 
@@ -179,10 +162,10 @@ class ApplePayMimic {
     _handler(id).onDismissed?.call();
   }
 
-  static Future<List<APayPaymentNetwork>> availableNetworks() async {
+  static Future<List<PKPaymentNetwork>> availableNetworks() async {
     final result = await _channel.invokeMethod('availableNetworks') as String;
     final json = jsonDecode(result) as List;
-    return json.map<APayPaymentNetwork>((e) => APayPaymentNetwork.fromJson(e as Map)).toList();
+    return json.map<PKPaymentNetwork>((e) => PKPaymentNetwork.fromJson(e as Map)).toList();
   }
 
   static Future<bool> canMakePayments([CanMakePaymentsRequest? request]) async {
@@ -196,10 +179,7 @@ class ApplePayMimic {
 
   static Future<void> processPayment({
     required ProcessPaymentRequest request,
-    required DidAuthorizePayment onAuthorize,
-    required DidSelectShippingMethod onSelectShippingMethod,
-    required DidSelectShippingContact onSelectShippingContact,
-    required DidSelectPaymentMethod onSelectPaymentMethod,
+    required PKPaymentAuthorizationControllerDelegate delegate,
     required DidError onError,
     DidDismissed? onDismissed,
   }) async {
@@ -209,10 +189,7 @@ class ApplePayMimic {
       throw 'wrong response';
     }
     _handlers[response] = ApplePayPaymentHandler(
-      onAuthorize: onAuthorize,
-      onSelectShippingMethod: onSelectShippingMethod,
-      onSelectShippingContact: onSelectShippingContact,
-      onSelectPaymentMethod: onSelectPaymentMethod,
+      delegate: delegate,
       onError: onError,
       onDismissed: onDismissed,
     );

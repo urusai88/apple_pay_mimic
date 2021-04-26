@@ -433,6 +433,7 @@ struct APayPaymentError: Codable {
     let contactField: APayContactField?
 
     public func toPK() -> Error? {
+        print(errorType)
         switch (errorType) {
         case Constants.paymentErrorContactInvalid:
             guard let contactField = contactField?.toPK() else {
@@ -533,6 +534,7 @@ struct APayRequestShippingContactUpdate: Codable {
                 paymentSummaryItems: paymentSummaryItems.map({ $0.toPK() }).onlyType(),
                 shippingMethods: shippingMethods.map({ $0.toPK() }).onlyType()
         )
+        print(result.errors)
         result.status = status.toPK()
         return result
     }
