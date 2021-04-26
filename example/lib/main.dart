@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
       bonusItemsInGermany: bonusItemsInGermany,
     );
     final request = ProcessPaymentRequest(
-      merchantIdentifier: 'merchant.com.lucyinthesky.sandbox',
+      merchantIdentifier: 'MERCHANT ID',
       countryCode: 'US',
       currencyCode: 'USD',
       shippingType: PKShippingType.shipping,
